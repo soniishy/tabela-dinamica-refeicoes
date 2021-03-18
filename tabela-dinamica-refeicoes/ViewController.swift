@@ -8,13 +8,31 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UITableViewController {
+    
+    let refeicoes = ["Churros", "Macarrão", "Pizza"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        print("tableviewcontroller foi carregado")
     }
-
-
+    
+    // Método número de linhas
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return refeicoes.count
+    }
+    
+    // Método conteúdo que cada celula vai ter
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let celula = UITableViewCell(style: .default, reuseIdentifier: nil)
+        
+        let refeicao = refeicoes[indexPath.row]
+        celula.textLabel?.text = refeicao
+        
+        return celula
+    }
 }
 
